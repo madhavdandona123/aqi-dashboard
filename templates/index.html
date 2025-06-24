@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AQI Dashboard by 4bytes</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f7f7;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .head {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #aqiInfo {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    canvas {
+      max-width: 100%;
+      height: auto;
+      margin-top: 30px;
+    }
+
+    @media (min-width: 768px) {
+      form {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      input[type="text"] {
+        width: 300px;
+      }
+
+      button {
+        margin-left: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="head">
+      <h2>Check Air Quality by 4bytes</h2>
+    </div>
+
+    <form id="locationForm">
+      <input type="text" id="locationInput" placeholder="Enter city or district" required>
+      <button type="submit">Get AQI</button>
+    </form>
+
+    <div id="aqiInfo">
+      <!-- AQI data will appear here -->
+    </div>
+
+    <canvas id="aqiChart" width="400" height="200"></canvas>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
